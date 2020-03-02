@@ -1,4 +1,4 @@
-import fs, { fdatasyncSync } from "fs";
+import fs from "fs";
 import { DataReader } from "./FileHandler";
 
 export class CSVFileReader implements DataReader {
