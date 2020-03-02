@@ -7,13 +7,12 @@ var fs_1 = __importDefault(require("fs"));
 var TXTFileReader = /** @class */ (function () {
     function TXTFileReader() {
         this.data = [];
-        this.datea = "";
     }
     TXTFileReader.prototype.Read = function (fileName) {
-        this.datea = fs_1.default.readFileSync(fileName, { encoding: 'utf-8' });
-        console.log(this.datea);
-        return this.data;
-    };
+        this.data = fs_1.default.readFileSync(fileName, { encoding: 'utf-8' }).split('\n').map(function (row) {
+            return row.split(',');
+        });
+    }; //end of Read()
     return TXTFileReader;
-}());
+}()); //end of CSVFileReader
 exports.TXTFileReader = TXTFileReader;
