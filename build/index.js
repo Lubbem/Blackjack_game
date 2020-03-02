@@ -11,9 +11,9 @@ var data = fh.fileRead();
 if (fh.dataReadSuccess) {
     //Each row within data is a new round
     for (var i = 0; i < data.length; i++) {
-        console.log("=======================================");
+        console.log("=====================================================================================================================");
         console.log(" Round " + (i + 1) + " Started");
-        console.log("=======================================");
+        console.log("=====================================================================================================================");
         var round = new Round_1.Round(data[i]);
         console.log('\n');
     }

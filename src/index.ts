@@ -11,12 +11,13 @@ const deck = new Deck();
 const fh = new FileHandler('test.txt', txtReader);
 var data: string[][] = fh.fileRead();
 
+
 if (fh.dataReadSuccess) {
     //Each row within data is a new round
     for (let i = 0; i < data.length; i++) {
-        console.log(`=======================================`);
+        console.log(`=====================================================================================================================`);
         console.log(` Round ${i+1} Started`);
-        console.log(`=======================================`);
+        console.log(`=====================================================================================================================`);
         var round = new Round(data[i]);
 
         console.log('\n');

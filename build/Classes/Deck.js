@@ -51,6 +51,14 @@ var Deck = /** @class */ (function () {
         } //end of for loop
         console.log('Player and delear cards removed from deck');
     }; //end of removeCards
+    Deck.prototype.shuffleDeck = function () {
+        for (var i = 0; i < this.cards.length; i++) {
+            var randomIndex = Math.floor(Math.random() * (i + 1));
+            var itemAtIndex = this.cards[randomIndex];
+            this.cards[randomIndex] = this.cards[i];
+            this.cards[i] = itemAtIndex;
+        } //end of for loop
+    };
     return Deck;
 }()); //end of Deck
 exports.Deck = Deck;

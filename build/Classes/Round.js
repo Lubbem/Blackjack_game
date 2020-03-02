@@ -5,6 +5,9 @@ var Card_1 = require("./Card");
 var Round = /** @class */ (function () {
     function Round(data) {
         this.data = data;
+        this.playerTotal1 = 0;
+        this.playerTotal2 = 0;
+        this.dealerHand = [];
         this.hand = [];
         this.deck = new Deck_1.Deck();
         this.players = 0;
@@ -16,7 +19,10 @@ var Round = /** @class */ (function () {
         if (this.players === 0)
             return;
         this.removeHandFromDeck();
-        //create seperate dealer hand and remove card from hand
+        this.removeDealerHand();
+        this.shuffelCards();
+        this.determineTotal(); //Player 1
+        //Players should each receive their own hand
     };
     Round.prototype.rowToCards = function () {
         for (var i = 0; i < this.data.length; i++) {
@@ -34,6 +40,11 @@ var Round = /** @class */ (function () {
     Round.prototype.removeHandFromDeck = function () {
         this.deck.removeCards(this.hand);
     };
+    Round.prototype.removeDealerHand = function () {
+        var lastCard = this.hand.length;
+        this.dealerHand.push(this.hand[lastCard - 1]);
+        this.hand.splice(lastCard - 1, 1);
+    };
     Round.prototype.getPlayers = function () {
         var handCards = this.hand.length;
         if (((handCards + 1) % 2) || (handCards === 1)) {
@@ -45,6 +56,53 @@ var Round = /** @class */ (function () {
             console.log(this.players + " player(s), and 1 dealer.");
         }
     }; //end getPlayers
+    Round.prototype.shuffelCards = function () {
+        this.deck.shuffleDeck();
+        console.log('Deck shuffled');
+    };
+    Round.prototype.playTurn = function () {
+    };
+    Round.prototype.hitOrStand = function () {
+        return false;
+    };
+    Round.prototype.determineTotal = function () {
+        this.addCardTotal(this.hand[0]);
+        this.hand.slice(0, 1);
+        this.addCardTotal(this.hand[1]);
+        this.hand.slice(0, 1);
+        if (this.playerTotal1 === this.playerTotal2) {
+            console.log(" Values " + this.playerTotal1);
+        }
+        else {
+            console.log(" Values " + this.playerTotal1 + " or " + this.playerTotal2);
+        }
+    };
+    Round.prototype.addCardTotal = function (card) {
+        if (card.name === "Ace") {
+            this.playerTotal1 = this.playerTotal1 + 1;
+            this.playerTotal2 = this.playerTotal2 + 11;
+        }
+        else {
+            this.playerTotal1 = this.playerTotal1 + card.value[0];
+            this.playerTotal2 = this.playerTotal2 + card.value[0];
+        }
+    };
     return Round;
 }());
 exports.Round = Round;
+// //Not working yet
+//         //An ace is counted twice
+//         //console.log(this.hand);
+//         var line1 = 0;
+//         var line2 = 0;
+//         for (let i = 0; i < this.players; i++) {
+//             if (this.hand[i].name === 'Ace') {
+//                 line1 = line1 + 1;
+//                 line2 = line2 + 11;
+//             } else {
+//                 line1 = line1 + this.hand[i].value[0];
+//                 line2 = line2 + this.hand[i].value[0];
+//             }
+//         }
+//         //console.log(line1);
+//         //console.log(line2);

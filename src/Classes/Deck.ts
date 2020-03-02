@@ -63,4 +63,13 @@ export class Deck {
         console.log('Player and delear cards removed from deck');
     } //end of removeCards
 
+    shuffleDeck(): void {
+        for (let i = 0; i < this.cards.length; i++) {
+            var randomIndex: number = Math.floor(Math.random() * (i + 1));
+            var itemAtIndex: Card = this.cards[randomIndex];
+            this.cards[randomIndex] = this.cards[i];
+            this.cards[i] = itemAtIndex;
+        }//end of for loop
+    }
+
 } //end of Deck
