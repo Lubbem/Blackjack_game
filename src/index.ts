@@ -12,6 +12,9 @@ const fh = new FileHandler('test.txt', txtReader);
 var data: string[][] = fh.fileRead();
 
 
+
+
+
 if (fh.dataReadSuccess) {
     //Each row within data is a new round
     for (let i = 0; i < data.length; i++) {

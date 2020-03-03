@@ -5,10 +5,12 @@
     ],
     "jsRules": {},
     "rules": {
-        "use-strict": [true,
-			"check-module",
-			"check-function"
-		]
+        "use-strict": [
+            true,
+            "check-module",
+            "check-function"
+        ],
+        "no-consecutive-blank-lines": false
     },
     "rulesDirectory": []
 }
