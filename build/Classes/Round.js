@@ -39,8 +39,11 @@ var Round = /** @class */ (function () {
         this.deck.cards.shift();
         this.determineTotal('Dealer');
         this.playGame('Dealer');
+        console.log("\t\t\t" + this.playerTotal1 + " OR " + this.playerTotal2 + " {Total}\n");
         this.playerTotals.push(['Dealer ', this.playerTotal1 + ":" + this.playerTotal2]);
-        console.log(this.playerTotals);
+        console.log("\t==================================");
+        this.determineWinner();
+        console.log("\t==================================");
     };
     Round.prototype.rowToCards = function () {
         for (var i = 0; i < this.data.length; i++) {
@@ -101,6 +104,10 @@ var Round = /** @class */ (function () {
             this.doHitCard();
             return true;
         }
+        else if ((this.playerTotal1 <= 16) && (this.playerTotal2 <= 16)) {
+            console.log("\t\t\t" + this.playerTotal1 + " OR " + this.playerTotal2 + " <= 16 {Stand}");
+            return true;
+        }
         else if ((this.playerTotal1 <= 17) && (this.playerTotal2 <= 17)) {
             console.log("\t\t\t" + this.playerTotal1 + " OR " + this.playerTotal2 + " <= 17 {Stand}");
             return false;
@@ -135,6 +142,47 @@ var Round = /** @class */ (function () {
             this.playerTotal2 = this.playerTotal2 + card.value[0];
         }
     };
+    Round.prototype.determineWinner = function () {
+        var winner = 'Nothing';
+        var winnerValue = 0;
+        for (var i = 0; i < this.playerTotals.length; i++) {
+            var player = this.playerTotals[i][0];
+            var currentTotals = this.playerTotals[i][1].split(':');
+            var thisPlayerTotal = 0;
+            var hitFold = 'Stand';
+            //Determine highest value under 21
+            if ((parseInt(currentTotals[0]) > 21) && (parseInt(currentTotals[0]) > 21)) {
+                hitFold = 'Fold';
+                thisPlayerTotal = 0;
+            }
+            if (parseInt(currentTotals[0]) > 21)
+                currentTotals[0] = '0';
+            if (parseInt(currentTotals[1]) > 21)
+                currentTotals[1] = '0';
+            if (parseInt(currentTotals[0]) > parseInt(currentTotals[1])) {
+                thisPlayerTotal = parseInt(currentTotals[0]);
+            }
+            else {
+                thisPlayerTotal = parseInt(currentTotals[1]);
+            }
+            console.log("\t\t" + player + " " + hitFold + " " + thisPlayerTotal);
+            //Stores the winner
+            if (thisPlayerTotal == winnerValue) {
+                winnerValue = thisPlayerTotal;
+                winner = winner + ' and ' + player;
+            }
+            if (thisPlayerTotal > winnerValue) {
+                winnerValue = thisPlayerTotal;
+                winner = player;
+            }
+            if (winnerValue == 0) {
+                winner = 'no winner';
+            }
+        } //end of for loop
+        console.log("\t==================================");
+        console.log("\tThe winner(s) is " + winner + " with " + winnerValue);
+    }; //end determineWinner
     return Round;
 }());
 exports.Round = Round;
+//Check if 13 pr 23 it folds, why? Correct this 
