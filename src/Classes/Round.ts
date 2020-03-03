@@ -201,4 +201,4 @@ export class Round {
 
 }
 
-//Check if 13 pr 23 it folds, why? Correct this 
+//Check two aces
