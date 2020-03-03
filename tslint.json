@@ -1,0 +1,14 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "jsRules": {},
+    "rules": {
+        "use-strict": [true,
+			"check-module",
+			"check-function"
+		]
+    },
+    "rulesDirectory": []
+}
