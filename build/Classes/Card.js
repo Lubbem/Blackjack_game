@@ -6,6 +6,9 @@ var Card = /** @class */ (function () {
         this.value = value;
         this.suit = suit;
     }
+    Card.prototype.toString = function () {
+        return ("Card: " + this.name + " of " + this.suit + " value " + this.value + " ");
+    };
     return Card;
 }());
 exports.Card = Card;
