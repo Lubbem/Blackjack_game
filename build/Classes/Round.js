@@ -104,10 +104,6 @@ var Round = /** @class */ (function () {
             this.doHitCard();
             return true;
         }
-        else if ((this.playerTotal1 <= 16) && (this.playerTotal2 <= 16)) {
-            console.log("\t\t\t" + this.playerTotal1 + " OR " + this.playerTotal2 + " <= 16 {Stand}");
-            return true;
-        }
         else if ((this.playerTotal1 <= 17) && (this.playerTotal2 <= 17)) {
             console.log("\t\t\t" + this.playerTotal1 + " OR " + this.playerTotal2 + " <= 17 {Stand}");
             return false;

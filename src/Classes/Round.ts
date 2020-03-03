@@ -115,15 +115,11 @@ export class Round {
                         this.doHitCard();
                         return true;
                     } else
-                        if ((this.playerTotal1 <= 16) && (this.playerTotal2 <= 16)) {
-                            console.log(`\t\t\t${this.playerTotal1} OR ${this.playerTotal2} <= 16 {Stand}`);
-                            return true;
+                        if ((this.playerTotal1 <= 17) && (this.playerTotal2 <= 17)) {
+                            console.log(`\t\t\t${this.playerTotal1} OR ${this.playerTotal2} <= 17 {Stand}`);
+                            return false;
                         } else
-                            if ((this.playerTotal1 <= 17) && (this.playerTotal2 <= 17)) {
-                                console.log(`\t\t\t${this.playerTotal1} OR ${this.playerTotal2} <= 17 {Stand}`);
-                                return false;
-                            } else
-                                return false;
+                            return false;
     }
 
     private doHitCard(): void {
