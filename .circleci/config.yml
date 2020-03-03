@@ -10,14 +10,6 @@ jobs:
       - node/with-cache:
           steps:
             - run: npm install
-            - run: npm install -g tslint typescript
-            - run: npm test
-      - run:
-          name: Install Lint
-          command: tslint -i
-      - run:
-          name: Linting
-          command: tslint --test
 workflows:
     build-and-test:
       jobs:
