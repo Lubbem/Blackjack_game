@@ -19,12 +19,13 @@ if (fh.dataReadSuccess) {
         console.log(` Round ${i+1} Started`);
         console.log(`=====================================================================================================================`);
         var round = new Round(data[i]);
-
         console.log('\n');
     }
 
 } else {
     console.log("No data has been retrieved, an error occurred.");
 }
+
+console.log(`=====================================================================================================================`);
 
 
