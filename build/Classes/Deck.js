@@ -49,7 +49,7 @@ var Deck = /** @class */ (function () {
                 }
             }
         } //end of for loop
-        console.log('Player and delear cards removed from deck');
+        console.log('\tPlayer and dealer cards removed from deck');
     }; //end of removeCards
     Deck.prototype.shuffleDeck = function () {
         for (var i = 0; i < this.cards.length; i++) {
