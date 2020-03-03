@@ -13,7 +13,7 @@ jobs:
             - run: npm test
       - run:
           name: Linting
-          command: tslint --test
+          command: npm run lint
 workflows:
     build-and-test:
       jobs:
