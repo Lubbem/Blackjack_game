@@ -5,6 +5,7 @@ export class Round {
 
     playerTotal1: number = 0;
     playerTotal2: number = 0;
+    playerTotals: string[][] = [];
 
     dealerHand: Card[] = [];
     hand: Card[] = [];
@@ -22,10 +23,28 @@ export class Round {
         this.removeHandFromDeck();
         this.removeDealerHand();
         this.shuffelCards();
-        this.determineTotal(); //Player 1
 
-        //Players should each receive their own hand
+        //Logic for each player
+        for (let i = 0; i < this.players; i++) {
+            this.playerTotal1 = 0;
+            this.playerTotal2 = 0;
+            this.determineTotal(i + 1);
+            this.playGame(i + 1);
+            this.playerTotals.push(['Player ' + (i + 1), `${this.playerTotal1}:${this.playerTotal2}`]);
+            console.log(`\t\t\t${this.playerTotal1} OR ${this.playerTotal2} {Total}\n`);
+        }
 
+        //Logic for dealer
+        this.playerTotal1 = 0;
+        this.playerTotal2 = 0;
+        this.hand = this.dealerHand;
+        this.hand.unshift(this.deck.cards[1]);
+        this.deck.cards.shift();
+        this.determineTotal('Dealer');
+        this.playGame('Dealer');
+
+        this.playerTotals.push(['Dealer ', `${this.playerTotal1}:${this.playerTotal2}`]);
+        console.log(this.playerTotals);
 
     }
 
@@ -70,26 +89,55 @@ export class Round {
         console.log('Deck shuffled');
     }
 
-    private playTurn(): void {
+    private playGame(playerNumber: number | string): void {
+        console.log(`\t\t\tPlayer ${playerNumber} turn started...`);
+        while (this.doHit()) { }
 
     }
 
-    private hitOrStand(): boolean {
-
-        return false;
+    private doHit(): boolean {
+        if ((this.playerTotal1 == 21) || (this.playerTotal2 == 21)) {
+            console.log(`\t\t\t${this.playerTotal1} OR ${this.playerTotal2} == 21 {Stand}`);
+            return false;
+        } else
+            if ((this.playerTotal1 > 21) || (this.playerTotal2 > 21)) {
+                console.log(`\t\t\t${this.playerTotal1} OR ${this.playerTotal2} > 21 {Fold}`);
+                return false;
+            } else
+                if ((this.playerTotal1 <= 11) && (this.playerTotal2 <= 11)) {
+                    console.log(`\t\t\t${this.playerTotal1} OR ${this.playerTotal2} <= 11 {Hit}`);
+                    this.doHitCard();
+                    return true;
+                } else
+                    if ((this.playerTotal1 <= 15) && (this.playerTotal2 <= 15)) {
+                        console.log(`\t\t\t${this.playerTotal1} OR ${this.playerTotal2} <= 15 {Hit}`);
+                        this.doHitCard();
+                        return true;
+                    } else
+                        if ((this.playerTotal1 <= 17) && (this.playerTotal2 <= 17)) {
+                            console.log(`\t\t\t${this.playerTotal1} OR ${this.playerTotal2} <= 17 {Stand}`);
+                            return false;
+                        } else
+                            return false;
     }
 
-    private determineTotal(): void {
+    private doHitCard(): void {
+        this.addCardTotal(this.deck.cards[1]);
+        console.log(`\t\t\t\t${this.deck.cards[1].toString()}`);
+        this.deck.cards.shift();
+    }
+
+    private determineTotal(playerNumber: number | string): void {
         this.addCardTotal(this.hand[0]);
-        this.hand.slice(0, 1);
-        this.addCardTotal(this.hand[1]);
-        this.hand.slice(0, 1);
+        this.hand.shift();
+        this.addCardTotal(this.hand[0]);
+        this.hand.shift();
         if (this.playerTotal1 === this.playerTotal2) {
-            console.log(` Values ${this.playerTotal1}`);
+            console.log(`\t\tPlayer ${playerNumber} total: ${this.playerTotal1}`);
         } else {
-            console.log(` Values ${this.playerTotal1} or ${this.playerTotal2}`);
+            console.log(`\t\tPlayer ${playerNumber} Total/s: ${this.playerTotal1} or ${this.playerTotal2}`);
         }
-        
+
     }
 
     private addCardTotal(card: Card): void {
@@ -103,23 +151,3 @@ export class Round {
     }
 
 }
-
-
-
-// //Not working yet
-//         //An ace is counted twice
-//         //console.log(this.hand);
-//         var line1 = 0;
-//         var line2 = 0;
-//         for (let i = 0; i < this.players; i++) {
-//             if (this.hand[i].name === 'Ace') {
-//                 line1 = line1 + 1;
-//                 line2 = line2 + 11;
-//             } else {
-//                 line1 = line1 + this.hand[i].value[0];
-//                 line2 = line2 + this.hand[i].value[0];
-//             }
-
-//         }
-//         //console.log(line1);
-//         //console.log(line2);
