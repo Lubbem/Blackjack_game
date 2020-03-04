@@ -18,7 +18,7 @@ var FileHandler = /** @class */ (function () {
     }; //end of fileExist
     //Check whether the file is correct format
     FileHandler.prototype.fileTypeCheck = function () {
-        var extension = this.filename.split('.');
+        var extension = this.filename.split(".");
         var correctFileType = false;
         for (var i = 0; i < FileTypes_1.fileTypes.length; i++) {
             if (extension[1] === FileTypes_1.fileTypes[i]) {

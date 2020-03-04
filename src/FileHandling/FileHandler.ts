@@ -20,7 +20,7 @@ export class FileHandler {
 
     //Check whether the file is correct format
     private fileTypeCheck(): boolean {
-        const extension = this.filename.split(`.`);
+        const extension = this.filename.split(".");
         let correctFileType = false;
 
         for (let i = 0; i < fileTypes.length; i++) {
@@ -35,16 +35,16 @@ export class FileHandler {
     fileRead(): string[][] {
         this.dataReadSuccess = false;
         if (!this.fileExist()) {                //Does the file exist
-            console.log(`${this.filename} does not exist.`);
+            console.log(this.filename + " does not exist.");
             return [];
         } else if (!this.fileTypeCheck()) {     //Is the file in the correct format
-            console.log(`${this.filename} is not in the correct format.`);
+            console.log(this.filename + " is not in the correct format.");
         }
 
         this.dataReader.Read(this.filename);
         this.data = this.dataReader.data;
         this.dataReadSuccess = true;
-        console.log(`Data read successfully from: ${this.filename}`);
+        console.log("Data read successfully from: " + this.filename);
 
         return this.data;
     } //end of fileRead

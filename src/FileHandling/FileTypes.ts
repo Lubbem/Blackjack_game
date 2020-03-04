@@ -1,1 +1,1 @@
-export const fileTypes: string[] = [`txt`, `csv`];
+export const fileTypes: string[] = ["txt", "csv"];

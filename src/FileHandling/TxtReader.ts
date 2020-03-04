@@ -8,8 +8,8 @@ export class TXTFileReader implements DataReader {
     constructor() { }
 
     Read(fileName: string): void {
-        this.data = fs.readFileSync(fileName, { encoding: `utf-8` }).split(`\n`).map((row:string) :string[] => {
-            return row.split(`,`);
+        this.data = fs.readFileSync(fileName, { encoding: "utf-8" }).split("\n").map((row:string) :string[] => {
+            return row.split(",");
         });
     } //end of Read()
 

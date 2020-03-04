@@ -9,8 +9,8 @@ var TXTFileReader = /** @class */ (function () {
         this.data = [];
     }
     TXTFileReader.prototype.Read = function (fileName) {
-        this.data = fs_1.default.readFileSync(fileName, { encoding: 'utf-8' }).split('\n').map(function (row) {
-            return row.split(',');
+        this.data = fs_1.default.readFileSync(fileName, { encoding: "utf-8" }).split("\n").map(function (row) {
+            return row.split(",");
         });
     }; //end of Read()
     return TXTFileReader;

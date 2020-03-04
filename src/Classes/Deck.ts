@@ -10,15 +10,15 @@ export class Deck {
 
     private setNewDeck(): void {
         //Refactored
-        var suits: string[] = [`Spades`, `Hearts`, `Clubs`, `Diamonds`];
+        var suits: string[] = ["Spades", "Hearts", "Clubs", "Diamonds"];
 
         suits.forEach(suit => {
-            this.cards.push(new Card(`Ace`, [1, 11], suit));
-            this.cards.push(new Card(`King`, [10], suit));
-            this.cards.push(new Card(`Queen`, [10], suit));
-            this.cards.push(new Card(`Jack`, [10], suit));
+            this.cards.push(new Card("Ace", [1, 11], suit));
+            this.cards.push(new Card("King", [10], suit));
+            this.cards.push(new Card("Queen", [10], suit));
+            this.cards.push(new Card("Jack", [10], suit));
             for (let i = 10; i > 1; i--) {
-                this.cards.push(new Card(`Pip`, [i], suit));
+                this.cards.push(new Card("Pip", [i], suit));
             }
         });
     } //setNewDeck
@@ -31,7 +31,7 @@ export class Deck {
                 }
             }
         } //end of for loop
-        console.log(`\tPlayer and dealer cards removed from deck`);
+        console.log("\tPlayer and dealer cards removed from deck");
     } //end of removeCards
 
     shuffleDeck(): void {
