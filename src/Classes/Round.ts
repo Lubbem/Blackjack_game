@@ -55,11 +55,11 @@ export class Round {
     private rowToCards(): void {
         for (let i = 0; i < this.data.length; i++) {
             const splitRow = this.data[i].split(":");
-
+            var card;
             if (splitRow.length > 3) {
-                var card = new Card(splitRow[0], [parseInt(splitRow[2]), parseInt(splitRow[3])], splitRow[1]);
+                card = new Card(splitRow[0], [parseInt(splitRow[2]), parseInt(splitRow[3])], splitRow[1]);
             } else {
-                var card = new Card(splitRow[0], [parseInt(splitRow[2])], splitRow[1]);
+                card = new Card(splitRow[0], [parseInt(splitRow[2])], splitRow[1]);
             }
             this.hand.push(card);
         }
@@ -182,7 +182,8 @@ export class Round {
                 thisPlayerTotal = parseInt(currentTotals[1]);
             }
 
-            console.log(`\t\t${player} ${hitFold} ${thisPlayerTotal}`);
+            //console.log(`\t\t${player} ${hitFold} ${thisPlayerTotal}`);
+            console.log("\t\t" + player + " " + hitFold + " " + thisPlayerTotal);
             //Stores the winner
             if (thisPlayerTotal == winnerValue) {
                 winnerValue = thisPlayerTotal;
