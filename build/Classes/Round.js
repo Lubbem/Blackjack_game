@@ -28,7 +28,7 @@ var Round = /** @class */ (function () {
             this.playerTotal2 = 0;
             this.determineTotal(i + 1);
             this.playGame(i + 1);
-            this.playerTotals.push(['Player ' + (i + 1), this.playerTotal1 + ":" + this.playerTotal2]);
+            this.playerTotals.push(["Player " + (i + 1), this.playerTotal1 + ":" + this.playerTotal2]);
             console.log("\t\t\t" + this.playerTotal1 + " OR " + this.playerTotal2 + " {Total}\n");
         }
         //Logic for dealer
@@ -37,10 +37,10 @@ var Round = /** @class */ (function () {
         this.hand = this.dealerHand;
         this.hand.unshift(this.deck.cards[1]);
         this.deck.cards.shift();
-        this.determineTotal('Dealer');
-        this.playGame('Dealer');
+        this.determineTotal("Dealer");
+        this.playGame("Dealer");
         console.log("\t\t\t" + this.playerTotal1 + " OR " + this.playerTotal2 + " {Total}\n");
-        this.playerTotals.push(['Dealer ', this.playerTotal1 + ":" + this.playerTotal2]);
+        this.playerTotals.push(["Dealer ", this.playerTotal1 + ":" + this.playerTotal2]);
         console.log("\t==================================");
         this.determineWinner();
         console.log("\t==================================");

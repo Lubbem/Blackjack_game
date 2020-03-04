@@ -24,12 +24,11 @@ var Deck = /** @class */ (function () {
         for (var j = 0; j < hand.length; j++) {
             for (var i = 0; i < this.cards.length; i++) {
                 if ((this.cards[i].name == hand[j].name) && (this.cards[i].suit == hand[j].suit) && (this.cards[i].value.toString() == hand[j].value.toString())) {
-                    //console.log(hand[j].name + hand[j].suit + hand[j].value + "....................................." + this.cards[i].name + this.cards[i].suit + this.cards[i].value);
                     this.cards.splice(i, 1);
                 }
             }
         } //end of for loop
-        console.log('\tPlayer and dealer cards removed from deck');
+        console.log("\tPlayer and dealer cards removed from deck");
     }; //end of removeCards
     Deck.prototype.shuffleDeck = function () {
         for (var i = 0; i < this.cards.length; i++) {

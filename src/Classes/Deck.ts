@@ -27,12 +27,11 @@ export class Deck {
         for (let j = 0; j < hand.length; j++) {
             for (let i = 0; i < this.cards.length; i++) {
                 if ((this.cards[i].name == hand[j].name) && (this.cards[i].suit == hand[j].suit) && (this.cards[i].value.toString() == hand[j].value.toString())) {
-                    //console.log(hand[j].name + hand[j].suit + hand[j].value + "....................................." + this.cards[i].name + this.cards[i].suit + this.cards[i].value);
                     this.cards.splice(i, 1);
                 }
             }
         } //end of for loop
-        console.log('\tPlayer and dealer cards removed from deck');
+        console.log(`\tPlayer and dealer cards removed from deck`);
     } //end of removeCards
 
     shuffleDeck(): void {

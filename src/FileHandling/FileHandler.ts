@@ -20,7 +20,7 @@ export class FileHandler {
 
     //Check whether the file is correct format
     private fileTypeCheck(): boolean {
-        const extension = this.filename.split('.');
+        const extension = this.filename.split(`.`);
         let correctFileType = false;
 
         for (let i = 0; i < fileTypes.length; i++) {
