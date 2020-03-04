@@ -7,38 +7,18 @@ var Deck = /** @class */ (function () {
         this.setNewDeck();
     }
     Deck.prototype.setNewDeck = function () {
-        //Spades
-        this.cards.push(new Card_1.Card('Ace', [1, 11], 'Spades'));
-        this.cards.push(new Card_1.Card('King', [10], 'Spades'));
-        this.cards.push(new Card_1.Card('Queen', [10], 'Spades'));
-        this.cards.push(new Card_1.Card('Jack', [10], 'Spades'));
-        for (var i = 10; i > 1; i--) {
-            this.cards.push(new Card_1.Card('Pip', [i], 'Spades'));
-        }
-        //Hearts
-        this.cards.push(new Card_1.Card('Ace', [1, 11], 'Hearts'));
-        this.cards.push(new Card_1.Card('King', [10], 'Hearts'));
-        this.cards.push(new Card_1.Card('Queen', [10], 'Hearts'));
-        this.cards.push(new Card_1.Card('Jack', [10], 'Hearts'));
-        for (var i = 10; i > 1; i--) {
-            this.cards.push(new Card_1.Card('Pip', [i], 'Hearts'));
-        }
-        //Clubs
-        this.cards.push(new Card_1.Card('Ace', [1, 11], 'Clubs'));
-        this.cards.push(new Card_1.Card('King', [10], 'Clubs'));
-        this.cards.push(new Card_1.Card('Queen', [10], 'Clubs'));
-        this.cards.push(new Card_1.Card('Jack', [10], 'Clubs'));
-        for (var i = 10; i > 1; i--) {
-            this.cards.push(new Card_1.Card('Pip', [i], 'Clubs'));
-        }
-        //Diamonds
-        this.cards.push(new Card_1.Card('Ace', [1, 11], 'Diamonds'));
-        this.cards.push(new Card_1.Card('King', [10], 'Diamonds'));
-        this.cards.push(new Card_1.Card('Queen', [10], 'Diamonds'));
-        this.cards.push(new Card_1.Card('Jack', [10], 'Diamonds'));
-        for (var i = 10; i > 1; i--) {
-            this.cards.push(new Card_1.Card('Pip', [i], 'Diamonds'));
-        }
+        var _this = this;
+        //Refactored
+        var suits = ["Spades", "Hearts", "Clubs", "Diamonds"];
+        suits.forEach(function (suit) {
+            _this.cards.push(new Card_1.Card("Ace", [1, 11], suit));
+            _this.cards.push(new Card_1.Card("King", [10], suit));
+            _this.cards.push(new Card_1.Card("Queen", [10], suit));
+            _this.cards.push(new Card_1.Card("Jack", [10], suit));
+            for (var i = 10; i > 1; i--) {
+                _this.cards.push(new Card_1.Card("Pip", [i], suit));
+            }
+        });
     }; //setNewDeck
     Deck.prototype.removeCards = function (hand) {
         for (var j = 0; j < hand.length; j++) {
