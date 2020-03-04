@@ -104,21 +104,21 @@ export class Round {
             console.log("\t\t\t" + this.playerTotal1 + " OR " + this.playerTotal2 + " == 21 {Stand}");
             return false;
         } else
-            if ((this.playerTotal1 > 21) || (this.playerTotal2 > 21)) {
+            if ((this.playerTotal1 > 21) && (this.playerTotal2 > 21)) {
                 console.log("\t\t\t" + this.playerTotal1 + " OR " + this.playerTotal2 + " > 21 {Bust}");
                 return false;
             } else
-                if ((this.playerTotal1 <= 11) && (this.playerTotal2 <= 11)) {
+                if ((this.playerTotal1 <= 11) || (this.playerTotal2 <= 11)) {
                     console.log("\t\t\t" + this.playerTotal1 + " OR " + this.playerTotal2 + " <= 11 {Hit}");
                     this.doHitCard();
                     return true;
                 } else
-                    if ((this.playerTotal1 <= 15) && (this.playerTotal2 <= 15)) {
+                    if ((this.playerTotal1 <= 15) || (this.playerTotal2 <= 15)) {
                         console.log("\t\t\t" + this.playerTotal1 + " OR " + this.playerTotal2 + " <= 15 {Hit}");
                         this.doHitCard();
                         return true;
                     } else
-                        if ((this.playerTotal1 <= 17) && (this.playerTotal2 <= 17)) {
+                        if ((this.playerTotal1 <= 17) || (this.playerTotal2 <= 17)) {
                             //console.log(`\t\t\t${this.playerTotal1} OR ${this.playerTotal2} <= 17 {Stand}`);
                             console.log("\t\t\t" + this.playerTotal1 + " OR " + this.playerTotal2 + " >= 16 {Stand}");
                             return false;
