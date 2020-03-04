@@ -153,6 +153,12 @@ export class Round {
             this.playerTotal1 = this.playerTotal1 + card.value[0];
             this.playerTotal2 = this.playerTotal2 + card.value[0];
         }
+
+        //What happens when the first two cards are aces
+        if ((card.name === "Ace") && (this.playerTotal2 == 22)) {
+            this.playerTotal2 = 12;
+        }
+
     }
 
     private determineWinner(): void {
