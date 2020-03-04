@@ -96,8 +96,7 @@ export class Round {
 
     private playGame(playerNumber: number | string): void {
         console.log("\t\t\tPlayer " + playerNumber + " turn started...");
-        while (this.doHit()) { }
-
+        while (this.doHit());
     }
 
     private doHit(): boolean {
@@ -163,7 +162,7 @@ export class Round {
         for (let i = 0; i < this.playerTotals.length; i++) {
 
             var player: string = this.playerTotals[i][0];
-            var currentTotals = this.playerTotals[i][1].split(':');
+            var currentTotals = this.playerTotals[i][1].split(":");
             var thisPlayerTotal = 0;
             var hitFold = "Stand";
 

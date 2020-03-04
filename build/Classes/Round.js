@@ -87,7 +87,8 @@ var Round = /** @class */ (function () {
     };
     Round.prototype.playGame = function (playerNumber) {
         console.log("\t\t\tPlayer " + playerNumber + " turn started...");
-        while (this.doHit()) { }
+        while (this.doHit())
+            ;
     };
     Round.prototype.doHit = function () {
         if ((this.playerTotal1 == 21) || (this.playerTotal2 == 21)) {
@@ -148,7 +149,7 @@ var Round = /** @class */ (function () {
         var winnerValue = 0;
         for (var i = 0; i < this.playerTotals.length; i++) {
             var player = this.playerTotals[i][0];
-            var currentTotals = this.playerTotals[i][1].split(':');
+            var currentTotals = this.playerTotals[i][1].split(":");
             var thisPlayerTotal = 0;
             var hitFold = "Stand";
             //Determine highest value under 21
