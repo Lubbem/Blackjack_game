@@ -2,3 +2,5 @@ King:Spades:10,Ace:Hearts:1:11,Pip:Hearts:3,Jack:Spades:10,Ace:Diamonds:1:11,Kin
 Queen:Spades:10,Ace:Spades:1:11,Pip:Hearts:3,Jack:Spades:10,Ace:Diamonds:1:11,Pip:Hearts:3
 King:Spades:10,Pip:Hearts:2,Pip:Hearts:3
 King:Spades:10
+King:Spades:10,Pip:Hearts:2,Pip:Hearts:3
+King:Spades:10
